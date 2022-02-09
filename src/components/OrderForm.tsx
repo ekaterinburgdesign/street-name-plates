@@ -22,8 +22,8 @@ export const defaultMessageData: MessageDataType = {
     plateLength: undefined,
     clientName: undefined,
     clientContact: undefined,
-    montagePlate: false,
-    dismantlingOldPlate: false,
+    montagePlate: true,
+    dismantlingOldPlate: true,
     platePrice: 0
 };
 
@@ -54,7 +54,7 @@ const checkboxesList = [
 const getDefaultCheckboxes = () =>
     checkboxesList.map((checkbox) => ({
         name: checkbox,
-        checked: false,
+        checked: true,
     }));
 
 function useCheckboxes(defaultCheckboxes) {
@@ -80,12 +80,16 @@ function Checkboxes({checkboxes, setCheckbox}) {
         setButtonSendOrderContext
     } = React.useContext(ButtonSendOrderContext);
 
+    let emptyText = () => { "" }
+
     return (
         <div className={'check-container'}>
+            <div onClick={emptyText}/>
             {checkboxes.map((checkbox, i) => (
                 <label className={'check'} key={i}>
                     <input
                         className={`check__input`}
+                        onClick={() => {}}
                         type="checkbox"
                         checked={checkbox.checked}
                         onChange={(e) => {
@@ -101,9 +105,7 @@ function Checkboxes({checkboxes, setCheckbox}) {
                         }}
                     />
                     <span className={`check__box`}>
-                        <p className={`check__box__price`}>
-                           до {checkbox.name == 'Демонтаж старой таблички' ? 2990 : 6990} ₽
-                        </p>
+                        <span className={'mark'}/>
                     </span>{checkbox.name}
                 </label>
             ))}
@@ -144,7 +146,6 @@ function OrderForm() {
     }
 
     const styleInfoText = {
-        marginTop: "120px",
         marginBottom: "40px",
         fontStyle: "normal",
         fontWeight: "normal",
@@ -175,13 +176,16 @@ function OrderForm() {
         color: "white",
         fontSize: "3.8rem",
         lineHeight: "1",
-        margin: "5.125rem 1.25rem 0rem 1.25rem",
+        margin: "5.125rem 1.25rem 0rem 0rem",
     }
 
     function FinalPrice() {
         return (
             <div>
-                <p style={{...finalPriceStyle, paddingBottom:'2rem'}}> {/*paddingBottom:'2rem' - костыль для пустого пространства внизу*/}
+                <p style={{
+                    ...finalPriceStyle,
+                    paddingBottom: '2rem'
+                }}>
                     <span style={{fontSize: '2.5rem'}}>Общая стоимость</span>
                     <span style={{fontWeight: 700}}>{
                         ExportPrice == undefined ? calculateFinalPrice(4990)
@@ -205,7 +209,7 @@ function OrderForm() {
                     fontSize: "2rem",
                     fontWeight: 300,
                     color: "white",
-                    margin: "0rem 1.25rem 4rem 1.5rem",
+                    margin: "0rem 1.25rem 4rem 0rem",
                     paddingBottom: '2.5rem', //костыль, чтобы появилось пустое пространство
                 }}>
                     зависит от сложности работ
@@ -243,8 +247,7 @@ function OrderForm() {
     }
 
     return (
-        <div className={'inputs-container'}>
-            <form onSubmit={event => event.preventDefault()}>
+        <form onSubmit={event => event.preventDefault()} className={'inputs-container'}>
                 <p style={styleInfoText}>
                     Оставьте любимый способ связи.
                     <br/>
@@ -284,8 +287,7 @@ function OrderForm() {
                 }/>
                 <RenderFinalPrice isMounting={buttonSendOrderContext.montagePlate}
                                   isDismounting={buttonSendOrderContext.dismantlingOldPlate}/>
-            </form>
-        </div>
+        </form>
     );
 }
 

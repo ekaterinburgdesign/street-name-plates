@@ -31,12 +31,13 @@ const Home = () => {
             <Head>
                 <title>Адресные таблички | Дизайн-код Екатеринбурга</title>
                 <link rel="icon" href="./icon.png" type="image/png"/>
-                <meta name="viewport" content="width=768, user-scalable=no" lang={'ru'} />
+                <meta name="viewport" content="width=768, user-scalable=no" lang={'ru'}/>
             </Head>
 
             <div className={Style.my_header}>
                 <div className={"header_link_container"} style={{marginTop: "2em"}}>
-                    <a href={'https://ekaterinburg.design/'} className={Style.header_link} rel="noreferrer" target='_blank'>
+                    <a href={'https://ekaterinburg.design/'} className={Style.header_link} rel="noreferrer"
+                       target='_blank'>
                         Дизайн-код Екатеринбурга
                     </a>
                 </div>
@@ -70,30 +71,32 @@ const Home = () => {
             </div>
             <ButtonSendOrderContext.Provider value={valueButtonSendOrderContext}>
                 <ChangeColorContext.Provider value={valueColorContext}>
-                    <div style={{margin: '0px', padding: '0px'}}>
-                        <div className={Style.front}>
-                            <div style={{zIndex: "-1"}}/>
-                            <Image src={`/${colorContext.frontImage}`}
-                                   alt={colorContext.color}
-                                   layout='fill'
-                                   placeholder='blur'
-                                   blurDataURL={rgbDataURL(156,156,156)}
-                                   priority
-                                    />
-                            <div id="order" className={Style.front_wrapper}>
-                                <h1 className={Style.h1_wrapper}>Заказ адресной<br/>таблички</h1>
-                                <p className={Style.p_wrapper}>Введите название улицы и номер дома</p>
-                                <StreetPlate/>
+                    {/*<div className={Style.container_form}>*/}
+                        <div className={Style.form_wrapper}>
+                            <div className={Style.front}>
+                                {/*<div style={{zIndex: "-1"}}/>*/}
+                                {/*<Image src={`/${colorContext.frontImage}`}*/}
+                                {/*       alt={colorContext.color}*/}
+                                {/*       layout='fill'*/}
+                                {/*       placeholder='blur'*/}
+                                {/*       blurDataURL={rgbDataURL(156,156,156)}*/}
+                                {/*       priority*/}
+                                {/*        />*/}
+                                <div id="order" className={Style.front_wrapper}>
+                                    <h1 className={Style.h1_wrapper}>Заказ адресной<br/>таблички</h1>
+                                    <p className={Style.p_wrapper}>Введите название улицы и номер дома</p>
+                                    <StreetPlate/>
+                                </div>
+                            </div>
+                            <div className={Style.inputs}>
+                                {/*<div className={Style.change_color_container}>*/}
+                                {/*    <p className={Style.inputs_p_wrapper}>Цвет фасада</p>*/}
+                                {/*    <ChangeColor/>*/}
+                                {/*</div>*/}
+                                <OrderForm/>
                             </div>
                         </div>
-                        <div className={Style.inputs}>
-                            <div className={Style.change_color_container}>
-                                <p className={Style.inputs_p_wrapper}>Цвет фасада</p>
-                                <ChangeColor/>
-                            </div>
-                            <OrderForm/>
-                        </div>
-                    </div>
+                    {/*</div>*/}
                 </ChangeColorContext.Provider>
             </ButtonSendOrderContext.Provider>
         </>

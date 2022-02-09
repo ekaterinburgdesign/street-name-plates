@@ -14,6 +14,7 @@ export let ExportPrice;
 
 const StreetPlate = () => {
     const [isFind, setIsFind] = React.useState(false);
+    const [isShow, setIsShow] = React.useState(false);
     const [suggestions, setSuggestions] = React.useState<StreetType[]>([]);
     const [inputVal, setInputVal] = React.useState<string>();
     const [inputPref, setInputPref] = React.useState<string>();
@@ -232,15 +233,18 @@ const StreetPlate = () => {
                         readOnly={true}
                         placeholder={'улица'}
                         tabIndex={-1}
+                        style={{cursor: 'default'}}
                     />
                     <input
                         className={Style.street_name}
                         type={'text'}
+                        onFocus={() => setIsShow(true)}
+                        onBlur={() => setIsShow(false)}
                         onChange={findSuggestions}
                         onKeyDown={navOnSuggestion}
                         value={inputVal}
                         placeholder={'8 Марта'}
-                        style={{fontSize: fontSizeStreetName}}
+                        style={{fontSize: fontSizeStreetName, cursor: 'text'}}
 
                     />
                     <input
@@ -249,8 +253,9 @@ const StreetPlate = () => {
                         readOnly={true}
                         placeholder={'8 MARTA STREET'}
                         tabIndex={-1}
+                        style={{cursor: 'default'}}
                     />
-                    {isFind && renderSuggestion()} {/*пока пускай будет тут, или навсегда будет тут...*/}
+                    {isShow && isFind && renderSuggestion()} {/*пока пускай будет тут, или навсегда будет тут...*/}
                 </div>
                 <div className={Style.separator}/>
                     <input
@@ -261,7 +266,7 @@ const StreetPlate = () => {
                             adjustFrontSize(event);
                             checkHistory(event.target.value, inputVal, streetType);
                         }}
-                        style={{fontSize: fontSizeBuildingNumber}}
+                        style={{fontSize: fontSizeBuildingNumber, cursor: 'text'}}
                     />
             </div>
             <div className={Style.size_and_price_container}>

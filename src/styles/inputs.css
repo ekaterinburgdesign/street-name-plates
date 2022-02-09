@@ -17,6 +17,7 @@
     background: #2F2F2F;
     border-radius: 24px;
     transition: .15s ease all;
+    cursor: text;
 }
 
 .StyledInput:hover {
@@ -37,6 +38,7 @@
 }
 
 .check {
+    cursor: pointer;
     display: flex;
     align-items: center;
     column-gap: 1em;
@@ -55,13 +57,13 @@
     padding: 0.2rem;
 }
 
-.check__box__price:before {
-    content: "";
+.mark {
+    padding: 0.2rem;
     display: inline-block;
-    margin-inline-end: 24px;
+    /*margin-inline-end: 24px;*/
     transform: rotate(45deg);
-    height: 1.5rem;
-    width: 0.75rem;
+    height: 2rem;
+    width: 1.25rem;
     border-bottom: 0.5rem solid #FFFFFF;
     border-right: 0.5rem solid #FFFFFF;
     transition: .15s ease;
@@ -73,6 +75,8 @@
     position: absolute;
     -webkit-appearance: none;
     appearance: none;
+    cursor: pointer;
+
 }
 
 .check__box {
@@ -80,24 +84,17 @@
     justify-content: center;
     align-items: center;
     height: 6rem;
-    width: 20rem;
-    min-height: 66px;
-    min-width: 236px;
+    width: 15rem;
     border-radius: 56px;
     border: 0.9rem solid #2F2F2F;
     transition: .15s ease;
 }
 
 .check__input:checked + .check__box {
-    height: 6rem;
-    width: 20rem;
-    min-height: 66px;
-    min-width: 236px;
-    border-radius: 56px;
     border-color: #FEC72E;
 }
 
-.check__input:checked + .check__box .check__box__price:before {
+.check__input:checked + .check__box .mark {
     border-bottom-color: #FEC72E;
     border-right-color: #FEC72E;
     opacity: 1;
@@ -105,35 +102,20 @@
 
 
 .check__input:checked:focus + .check__box {
-    height: 6rem;
-    width: 20rem;
-    min-height: 66px;
-    min-width: 236px;
-    border-radius: 56px;
     border-color: #FEC72E;
 }
 
 .check__input:hover + .check__box,
 .check__input:focus-visible + .check__box {
-    height: 6rem;
-    width: 20rem;
-    min-height: 66px;
-    min-width: 236px;
-    border-radius: 56px;
     border-color: #FFFFFF;
 }
 
-.check__input:hover + .check__box .check__box__price:before,
-.check__input:focus-visible + .check__box .check__box__price:before {
+.check__input:hover + .check__box .mark,
+.check__input:focus-visible + .check__box .mark {
     opacity: 1;
 }
 
 .check__input:checked:focus-visible + .check__box {
-    height: 6rem;
-    width: 20rem;
-    min-height: 66px;
-    min-width: 236px;
-    border-radius: 56px;
     border-color: #FEC72E;
     outline: 5px solid #ffffff;
 }
@@ -146,6 +128,7 @@ p {
 }
 
 .inputs-container {
-    max-width: 900px;
-    height: 696px;
+    padding: 0;
+    margin: 0;
+    max-width: 56.25rem;
 }

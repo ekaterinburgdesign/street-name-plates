@@ -1,3 +1,16 @@
+input {
+    font-style: normal;
+    font-size: 3.125rem;
+    line-height: 1.4;
+    border: none;
+    display: inline;
+    width: auto;
+    height: auto;
+    background: #2a2b3c;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
 .OrderButton {
     display: flex;
     flex-direction: row;
@@ -5,7 +18,7 @@
     align-items: center;
     padding: .62em 2.5em;
     margin-top: 50px;
-    background: black;
+    background: #123;
     max-width: 900px;
     height: 9.37em;
     position: relative;
@@ -23,7 +36,7 @@
     align-items: center;
     padding: .62em 2.5em;
     margin-top: 50px;
-    background: black;
+    background: #123;
     max-width: 900px;
     height: 9.37em;
     position: relative;
@@ -66,11 +79,7 @@
     z-index: -1;
     margin: -15px;
     border-radius: inherit;
-    background: linear-gradient(
-            rgba(254, 199, 46, 1),
-            rgba(0, 210, 0, 1),
-            rgba(0, 180, 255, 1)
-    );
+    background: linear-gradient(to bottom left, rgb(254, 199, 46) 33.333%, rgb(0, 210, 0) 33.333% 66.666%, rgb(0, 180, 255) 66.666%);
 }
 
 @keyframes fadeIn {
@@ -100,11 +109,7 @@
     margin: -10px;
     border-radius: inherit;
     transition: .15s ease margin;
-    background: linear-gradient(
-            rgba(254, 199, 46, 1),
-            rgba(0, 210, 0, 1),
-            rgba(0, 180, 255, 1)
-    );
+    background: linear-gradient(to bottom left, rgb(254, 199, 46) 33.333%, rgb(0, 210, 0) 33.333% 66.666%, rgb(0, 180, 255) 66.666%);
 }
 
 .OrderButton:hover::before {
